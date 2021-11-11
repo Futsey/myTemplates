@@ -1,6 +1,7 @@
 #### MyTemplates
-![GitHub forks](https://img.shields.io/github/forks/Futsey/myTemplates?style=plastic)
 ![GitHub last commit](https://img.shields.io/github/last-commit/Futsey/myTemplates?style=for-the-badge)
+![GitHub forks](https://img.shields.io/github/forks/Futsey/myTemplates?style=plastic)
+
 
 
 
