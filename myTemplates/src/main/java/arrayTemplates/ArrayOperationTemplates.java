@@ -324,6 +324,83 @@ public class ArrayOperationTemplates {
         return array;
     }
 
+    /*
+     *Вам дана квадратная матрица. Нужно получить правую диагональ.
+     * Правая диагональ это диагональ матрицы, которая идет справа налево.
+     */
+    public static int[] matrixDiagonal(int[][] data) {
+        int count = 0;
+        int row = data.length;
+        int column = data[0].length;
+        int[] array = new int[row];
+        for (int i = 0; i < row; i++) {
+            for (int k = column - 1; k >= 0; k--) {
+                array[count] = data[i][k];
+                count++;
+                column -= 1;
+                break;
+            }
+        }
+        System.out.print("Получен массив: " + Arrays.toString(array) + System.lineSeparator());
+        return array;
+    }
+
+    /*
+     * Создадим новую строку в массиве символов,
+     * в которой все символы будут в верхнем регистре.
+     * Если символ не является буквой, например цифрой или знаком, то добавляем в результат как есть.
+     */
+    public static char[] toUpperCase(char[] string) {
+        for (int i = 0; i < string.length; i++) {
+            if (Character.isLowerCase(string[i])) {
+                string[i] = Character.toUpperCase(string[i]);
+            }
+        }
+        System.out.println(Arrays.toString(string));
+        return string;
+    }
+
+    /*
+     * Метод принимает 3 массива целочисленных значений, при этом каждый обладает следующими свойствами:
+
+     * 1. Имеет произвольную длину массива.
+     * 2. Массив всегда имеет нечетное число элементов.
+     * 3. Массив имеет количество элементов на 1 больше, чем массив из пункта 2.
+
+     * Необходимо реализовать метод, который объединит три массива в один.
+     * При этом должны выполниться следующие условия:
+
+     * 1. Из первого массива в результирующий массив
+     * должны попасть только первый и последний элемент,
+     * причем в результирующем массиве они должны находиться на первом и последнем месте, соответственно.
+     * 2. Элементы с нечетными индексами из второго массива
+     * должны находиться в результирующем массиве на местах с четными индексами.
+     * 3. Элементы с четными индексами из третьего массива
+     * должны находиться в результирующем массиве на местах с нечетными индексами.
+     */
+    public static int[] unionThreeArrays(int[] left, int[] middle, int[] right) {
+        int count = 1;
+        int middleSize = middle.length / 2;
+        int rightSize = right.length / 2;
+        int[] array = new int[2 + middleSize + rightSize];
+        array[0] = left[0];
+        array[array.length - 1] = left[left.length - 1];
+        while ((middleSize % 2 == 0) || (rightSize == (middleSize + 1))) {
+            for (int i = 0; i < middle.length; i++) {
+                if (middle[i] % 2 != 0) {
+                    array[count] = middle[i];
+                    count++;
+                }
+                if (right[i] % 2 != 0) {
+                    array[count] = right[i];
+                    count++;
+                }
+            }
+            break;
+        }
+        return array;
+    }
+
     public static void main(String[] args) {
 
         // Пример для сортировки по возрастанию
@@ -430,6 +507,18 @@ public class ArrayOperationTemplates {
                 {7, 8, 9}
         };
         main.mergeTwoDimensArray(squareArray);
+
+        // Вам дана квадратная матрица. Нужно получить правую диагональ.
+        // Правая диагональ это диагональ матрицы, которая идет справа налево.
+        System.out.println(System.lineSeparator() + "matrixDiagonal: ");
+        main.matrixDiagonal(squareArray);
+
+        // Создадим новую строку в массиве символов,
+        // в которой все символы будут в верхнем регистре.
+        // Если символ не является буквой, например цифрой или знаком, то добавляем в результат как есть.
+        System.out.println(System.lineSeparator() + "toUpperCase: ");
+        char[] charArray = new char[]{'w', 'o', 'l', 'f', '-', '1', '2', '3'};
+        main.toUpperCase(charArray);
     }
 }
 
