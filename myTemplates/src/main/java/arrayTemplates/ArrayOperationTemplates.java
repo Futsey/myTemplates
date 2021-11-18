@@ -398,6 +398,7 @@ public class ArrayOperationTemplates {
             }
             break;
         }
+        System.out.println(Arrays.toString(array));
         return array;
     }
 
@@ -519,6 +520,13 @@ public class ArrayOperationTemplates {
         System.out.println(System.lineSeparator() + "toUpperCase: ");
         char[] charArray = new char[]{'w', 'o', 'l', 'f', '-', '1', '2', '3'};
         main.toUpperCase(charArray);
+
+        // 3 массива в 1
+        System.out.println(System.lineSeparator() + "unionThreeArrays: ");
+        int[] arrayOne = {1, 2, 1, 1};
+        int[] arrayTwo = {4, 75, 2, 1, 6, 5};
+        int[] arrayThree = {3, 12, 23, 6, 8, 9, 1, 26};
+        main.unionThreeArrays(arrayOne, arrayTwo, arrayThree);
     }
 }
 
