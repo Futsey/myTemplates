@@ -402,6 +402,98 @@ public class ArrayOperationTemplates {
         return array;
     }
 
+    /*
+     * Метод который осуществит конвертацию двумерного квадратного массива в одномерный,
+     * при этом необходимо выполнить условия: при переборе двумерных массивов осуществить сравнение элементов,
+     * которые стоят на местах с одинаковыми индексами, и вернуть максимальное из сравниваемых значений.
+     * Максимальное из двух значений необходимо вставить в результирующий массив.
+     */
+    public static int[] twoSquareArrays(int[][] left, int[][] right) {
+        int count = 0;
+        int row = left.length;
+        int column = left[0].length;
+        int[] array = new int[row * row];
+        for (int i = 0; i < row; i++) {
+            for (int k = 0; k < column; k++) {
+                if (left[i][k] > right[i][k]) {
+                    array[count] = left[i][k];
+                    count++;
+                } else {
+                    array[count] = right[i][k];
+                    count++;
+                }
+            }
+        }
+        System.out.print("Получен массив: " + Arrays.toString(array) + System.lineSeparator());
+        return array;
+    }
+
+    /*
+     * Метод принимает массив целочисленных значений.
+     * Необходимо реализовать метод, который превратит одномерный массив в квадратный двумерный.
+     */
+    public static int[][] arrayInSquareArray(int[] array) {
+        int count = 0;
+        double lengthArray = Math.ceil(Math.sqrt(array.length));
+        int length = (int) lengthArray;
+        int[][] matrix = new int[length][length];
+        for(int i = 0; i < lengthArray; i++) {
+            for(int k = 0; k < lengthArray; k++) {
+                if (count < array.length) {
+                    matrix[i][k] = array[i * length + k];
+                    count++;
+                    System.out.print(matrix[i][k] + " ");
+                } else {
+                    matrix[i][k] = 0;
+                    System.out.print(matrix[i][k] + " ");
+                }
+            }
+            System.out.println();
+        }
+        return matrix;
+    }
+
+    /*
+     * Метод принимает двумерный массив у которого число рядов и число элементов в ряду не совпадают,
+     * также количество элементов в каждом ряду может быть абсолютно произвольным.
+     * Вам необходимо реализовать метод так, чтобы на выходе получился двумерный квадратный массив.
+     * При этом размерность выходного массива должна рассчитываться.
+     * Если для полного заполнения выходного массива в исходном массиве не хватает
+     * элементов - необходимо дополнить массив 0.
+     */
+
+    public static int[][] convertInSquareArray(int[][] array) {
+        int count = 0;
+        int temp = 0;
+        for(int i = 0; i < array.length; i++) {
+            count += array[i].length;
+        }
+        int length = (int) Math.ceil(Math.sqrt(count));
+        int[] flatArray = new int[count];
+        for(int i = 0; i < array.length; i++) {
+            for(int x = 0; x < array[i].length; x++) {
+                flatArray[temp++] = array[i][x];
+            }
+        }
+        int[][] matrix = new int[length][length];
+        for(int i = 0; i < length; i++) {
+            count = 0;
+            for(int k = 0; k < length; k++) {
+                if (temp > 0) {
+                    matrix[i][k] = flatArray[i * length + k];
+                    count++;
+                    temp--;
+                    System.out.print(matrix[i][k] + " ");
+                } else {
+                    matrix[i][k] = 0;
+                    System.out.print(matrix[i][k] + " ");
+                }
+            }
+            System.out.println();
+        }
+        return matrix;
+    }
+
     public static void main(String[] args) {
 
         // Пример для сортировки по возрастанию
@@ -527,6 +619,32 @@ public class ArrayOperationTemplates {
         int[] arrayTwo = {4, 75, 2, 1, 6, 5};
         int[] arrayThree = {3, 12, 23, 6, 8, 9, 1, 26};
         main.unionThreeArrays(arrayOne, arrayTwo, arrayThree);
+
+        // Метод который осуществит конвертацию двумерного квадратного массива в одномерный,
+        // при этом необходимо выполнить условия: при переборе двумерных массивов осуществить сравнение элементов,
+        // которые стоят на местах с одинаковыми индексами, и вернуть максимальное из сравниваемых значений.
+        // Максимальное из двух значений необходимо вставить в результирующий массив.
+        System.out.println(System.lineSeparator() + "twoSquareArrays: ");
+        int[][] squareArray2 = {
+                {6, 2, 3},
+                {4, 3, 6},
+                {7, 5, 9}
+        };
+        main.twoSquareArrays(squareArray, squareArray2);
+
+        // Метод, который превратит одномерный массив в квадратный двумерный
+        System.out.println(System.lineSeparator() + "arrayInSquareArray: ");
+        main.arrayInSquareArray(arrayEven);
+
+        // Метод принимает двумерный массив у которого число рядов и число элементов в ряду не совпадают,
+        // также количество элементов в каждом ряду может быть абсолютно произвольным.
+        // Вам необходимо реализовать метод так, чтобы на выходе получился двумерный квадратный массив.
+        // При этом размерность выходного массива должна рассчитываться.
+        // Если для полного заполнения выходного массива в исходном массиве не хватает
+        // элементов - необходимо дополнить массив 0.
+        System.out.println(System.lineSeparator() + "convertInSquareArray: ");
+        int[][] dimensArray = {{1}, {2, 3}, {4, 5, 6}, {7, 8}, {9}, {3, 2, 1}, {5}, {6, 1, 12, 15, 4}};
+        main.convertInSquareArray(dimensArray);
     }
 }
 
