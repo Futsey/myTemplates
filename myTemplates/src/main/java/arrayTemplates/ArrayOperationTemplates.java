@@ -494,6 +494,40 @@ public class ArrayOperationTemplates {
         return matrix;
     }
 
+    /*
+     * Метод должен определить сумму всех элементов в массиве,
+     * проверить значение суммы является ли оно четным числом
+     */
+    public static boolean evenSumElementsInArray(int[] data) {
+        boolean rsl;
+        int tmp = 0;
+        int x = 0;
+        for (int i = 0; i < data.length; i++) {
+            x = data[i];
+            tmp = tmp + x;
+        }
+        return rsl = tmp % 2 == 0;
+    }
+
+    /*
+     * Метод должен посчитать количество одинаковых элементов которые совпадают с value,
+     * и если окажется что это число больше или равно половине длины входного
+     * массива - массив считается невалидным и метод должен вернуть false
+     */
+    public static boolean validator(int[] data, int value) {
+        boolean rsl;
+        int tmp = 0;
+        for (int i = 0; i < data.length; i++) {
+            if (data[i] == value){
+                tmp++;
+            }
+            if (tmp > (data.length / 2)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
 
         // Пример для сортировки по возрастанию
@@ -645,6 +679,20 @@ public class ArrayOperationTemplates {
         System.out.println(System.lineSeparator() + "convertInSquareArray: ");
         int[][] dimensArray = {{1}, {2, 3}, {4, 5, 6}, {7, 8}, {9}, {3, 2, 1}, {5}, {6, 1, 12, 15, 4}};
         main.convertInSquareArray(dimensArray);
+
+        // Метод должен определить сумму всех элементов в массиве,
+        // проверить значение суммы является ли оно четным числом
+        System.out.println(System.lineSeparator() + "evenSumElementsInArray: ");
+        System.out.println(main.evenSumElementsInArray(array));
+
+        // Метод должен посчитать количество одинаковых элементов которые совпадают с value,
+        // и если окажется что это число больше или равно половине длины входного
+        // массива - массив считается невалидным и метод должен вернуть false
+        System.out.println(System.lineSeparator() + "validator: ");
+        System.out.println(main.validator(array, 2));
+
+
+
     }
 }
 

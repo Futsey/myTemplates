@@ -231,4 +231,34 @@ public class ArrayOperationTemplatesTest {
         int[][] expected = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
         assertThat(rsl, is(expected));
     }
+
+    @Test
+    public void checkEvenSumArrayFalse() {
+        int[] data = {1, 2, 3, 4, 5};
+        boolean rsl = ArrayOperationTemplates.evenSumElementsInArray(data);
+        assertThat(rsl, is(false));
+    }
+
+    @Test
+    public void checkEvenSumArrayTrue() {
+        int[] data = {1, 2, 3, 4, 5, 6, 7};
+        boolean rsl = ArrayOperationTemplates.evenSumElementsInArray(data);
+        assertThat(rsl, is(true));
+    }
+
+    @Test
+    public void checkArrayFalse1() {
+        int[] data = {1, 2, 1, 3, 1, 4, 1};
+        int value = 1;
+        boolean rsl = ArrayOperationTemplates.validator(data, value);
+        assertThat(rsl, is(false));
+    }
+
+    @Test
+    public void checkArrayTrue1() {
+        int[] data = {1, 2, 3, 1, 4, 1, 5, 6, 7, 1, 8, 9};
+        int value = 1;
+        boolean rsl = ArrayOperationTemplates.validator(data, value);
+        assertThat(rsl, is(true));
+    }
 }
