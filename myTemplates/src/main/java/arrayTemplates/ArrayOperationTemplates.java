@@ -528,6 +528,111 @@ public class ArrayOperationTemplates {
         return true;
     }
 
+    /*
+     * Необходимо перебрать двумерный массив и сравнить каждый элемент со значением el,
+     * которое мы передаем в параметрах метода. При этом:
+     *
+     * 1. Если элемент массива больше значения el - элемент массива нужно
+     * заменить на разность между текущим значением элемента массива и значения el.
+     * 2. Если элемент массива меньше или равен el - необходимо заменить текущий элемент массива 0.
+     */
+    public static int[][] editorElementsArray(int[][] array, int el) {
+        int tmp = 0;
+        for (int i = 0; i < array.length; i++) {
+            for (int k = 0; k < array[i].length; k++) {
+                if (el < array[i][k]) {
+                    tmp = array[i][k] - el;
+                    array[i][k] = tmp;
+                    System.out.print(array[i][k] + " ");
+                } else if (el >= array[i][k]) {
+                    array[i][k] = 0;
+                    System.out.print(array[i][k] + " ");
+                }
+            }
+        }
+        return array;
+    }
+
+    /*
+     * Метод вернет одномерный массив, который не будет содержать значений 0
+     * (необходимо использовать метод Arrays.copyOf()). При этом исходные данные будут следующими:
+     * 1. Квадратный двумерный массив целочисленных значений data.
+     * 2. Целочисленный элемент sum, который означает сумму индексов [i] + [k] (координату) в массиве.
+     *
+     * При этом необходимо чтобы выполнились следующие условия:
+     * 1. Если сумма индексов при переборе двумерного массива равна sum,
+     * то элемент с такими индексами должен принять значение 0.
+     * 2. Выходной одномерный массив не должен содержать значения 0.
+     * TODO использовать Arrays.copyOf())
+     */
+    public static int[] сheckSumIndexesInArray(int[][] data, int sum) {
+        int count = 0;
+        for (int i = 0; i < data.length; i++) {
+            count += data[i].length;
+        }
+        int[] tempArray = new int[count];
+        count = 0;
+        for (int i = 0; i < data.length; i++) {
+            for (int k = 0; k < data[i].length; k++) {
+                if ((i + k) == sum) {
+                    data[i][k] = 0;
+                    tempArray[count] = data[i][k];
+                    count ++;
+                } else {
+                    tempArray[count] = data[i][k];
+                    count ++;
+                }
+            }
+        }
+        count = 0;
+        for (int y = 0; y < tempArray.length; y++) {
+            if (tempArray[y] != 0) {
+                count++;
+            }
+        }
+        int[] flatArray = new int[count];
+        count = 0;
+        for (int j = 0; j < tempArray.length; j++) {
+            if (tempArray[j] != 0) {
+                flatArray[count] = tempArray[j];
+                count++;
+            }
+        }
+        System.out.println(Arrays.toString(flatArray));
+        return flatArray;
+    }
+
+    /*
+     * метод который принимает 2 параметра:
+     * 1. Массив целочисленный значений data.
+     * 2. Целое число el, которое мы будем искать в массиве data.
+     *
+     * При этом должны выполниться следующие условия:
+     * 1. Метод должен вернуть сумму элементов массива data, которые находятся до элемента el
+     * 2. Если окажется что сумма элементов - четное число - необходимо вернуть это число, иначе - 0.
+     * TODO Дописать вывод на консоль в случае нечетного результата
+     */
+    public static int sumWithStopEl(int[] data, int el) {
+        int rsl = 0;
+        int a = 0;
+        for (int i = 0; i < el; i++) {
+            if (data[i] == 0) {
+                System.out.println("First element" + data[i]);
+                rsl = data[0];
+                break;
+            } else if (data[i] == el) {
+                for (int k = i; k >= data[0]; k--) {
+                    a = data[k - 1];
+                    rsl += a;
+                } if (rsl % 2 == 0) {
+                    return rsl;
+                }
+                System.out.println("Возвращено: " + rsl);
+            }
+        }
+        return 0;
+    }
+
     public static void main(String[] args) {
 
         // Пример для сортировки по возрастанию
@@ -691,8 +796,37 @@ public class ArrayOperationTemplates {
         System.out.println(System.lineSeparator() + "validator: ");
         System.out.println(main.validator(array, 2));
 
+        // Необходимо перебрать двумерный массив и сравнить каждый элемент со значением el,
+        // которое мы передаем в параметрах метода. При этом:
+        //
+        // 1. Если элемент массива больше значения el - элемент массива нужно
+        // заменить на разность между текущим значением элемента массива и значения el.
+        // 2. Если элемент массива меньше или равен el - необходимо заменить текущий элемент массива 0.
+        System.out.println(System.lineSeparator() + "editorElementsArray: ");
+        main.editorElementsArray(dimensArray, 5);
 
+        // Метод который вернет одномерный массив, который не будет содержать значений 0
+        // (необходимо использовать метод Arrays.copyOf()). При этом исходные данные будут следующими:
+        //
+        // 1. Квадратный двумерный массив целочисленных значений data.
+        // 2. Целочисленный элемент sum, который означает сумму индексов в массиве.
+        // При этом необходимо чтобы выполнились следующие условия:
+        //
+        // 1. Если сумма индексов при переборе двумерного массива равна sum,
+        // то элемент с такими индексами должен принять значение 0.
+        // 2. Выходной одномерный массив не должен содержать значения 0.
+        System.out.println(System.lineSeparator() + "сheckSumIndexesInArray: ");
+        main.сheckSumIndexesInArray(dimensArray, 2);
 
+        // Метод который принимает 2 параметра:
+        // 1. Массив целочисленный значений data.
+        // 2. Целое число el, которое мы будем искать в массиве data.
+        //
+        // При этом должны выполниться следующие условия:
+        // 1. Метод должен вернуть сумму элементов массива data, которые находятся до элемента el
+        // 2. Если окажется что сумма элементов - четное число - необходимо вернуть это число, иначе - 0.
+        System.out.println(System.lineSeparator() + "sumWithStopEl: ");
+        main.sumWithStopEl(arrayPrintEvenAndNotEven, 6);
     }
 }
 

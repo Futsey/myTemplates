@@ -261,4 +261,48 @@ public class ArrayOperationTemplatesTest {
         boolean rsl = ArrayOperationTemplates.validator(data, value);
         assertThat(rsl, is(true));
     }
+
+    @Test
+    public void changeData() {
+        int[][] array = {{1, 8, 3}, {2, 4, 11}, {-10, 6, 5}};
+        int el = 3;
+        int[][] rsl = ArrayOperationTemplates.editorElementsArray(array, el);
+        int[][] expected = {{0, 5, 0}, {0, 1, 8}, {0, 3, 2}};
+        assertThat(rsl, is(expected));
+    }
+    @Test
+    public void changeDataTwo() {
+        int[][] array = {{5}, {1, 4}, {-10, 18, 9}, {3, 2, 7, 11}};
+        int el = 3;
+        int[][] rsl = ArrayOperationTemplates.editorElementsArray(array, el);
+        int[][] expected = {{2}, {0, 1}, {0, 15, 6}, {0, 0, 4, 8}};
+        assertThat(rsl, is(expected));
+    }
+
+    @Test
+    public void collectNewArray() {
+        int[][] data = {
+                {1, 2, 3, 4},
+                {5, 6, 7, 8},
+                {9, 10, 11, 12},
+                {13, 14, 15, 16}
+        };
+        int[] rsl = ArrayOperationTemplates.сheckSumIndexesInArray(data, 3);
+        int[] expected = {1, 2, 3, 5, 6, 8, 9, 11, 12, 14, 15, 16};
+        assertThat(rsl, is(expected));
+    }
+
+    @Test
+    public void countNotEven() {
+        int[] data = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int rsl = ArrayOperationTemplates.sumWithStopEl(data, 7);
+        assertThat(rsl, is(0));
+    }
+
+    @Test
+    public void countEven() {
+        int[] data = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int rsl = ArrayOperationTemplates.sumWithStopEl(data, 5);
+        assertThat(rsl, is(10));
+    }
 }
