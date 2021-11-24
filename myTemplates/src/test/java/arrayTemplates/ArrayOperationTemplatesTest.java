@@ -305,4 +305,26 @@ public class ArrayOperationTemplatesTest {
         int rsl = ArrayOperationTemplates.sumWithStopEl(data, 5);
         assertThat(rsl, is(10));
     }
+
+    @Test
+    public void changeDataWithoutEvenElements() {
+        int[] data = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int[] rsl = ArrayOperationTemplates.arrayWithoutEvenElements(data);
+        int[] expected = {1, 3, 5, 7, 9};
+        assertThat(rsl, is(expected));
+    }
+
+    @Test
+    public void fibonacciTestTrue() {
+        int[] data = {1, 2, 3, 5, 8, 13, 21, 34, 55, 89};
+        boolean rsl = ArrayOperationTemplates.fibonacciTest(data);
+        assertThat(rsl, is(true));
+    }
+
+    @Test
+    public void fibonacciTestFalse() {
+        int[] data = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        boolean rsl = ArrayOperationTemplates.fibonacciTest(data);
+        assertThat(rsl, is(false));
+    }
 }

@@ -633,6 +633,54 @@ public class ArrayOperationTemplates {
         return 0;
     }
 
+    /*
+     * Необходимо перебрать массив и выбрать из него только нечетные числа.
+     * Вернуть новый массив, в котором будут только нечетные числа.
+     * При этом длина нового массива должна совпадать с количеством нечетных значений в исходном массиве.
+     */
+    public static int[] arrayWithoutEvenElements(int[] data) {
+        int count = 0;
+        for (int i = 0; i < data.length; i++) {
+            if (data[i] % 2 != 0) {
+                count++;
+            }
+        }
+        int[] flatArray = new int[count];
+        count = 0;
+        for (int k = 0; k < data.length; k++) {
+            if (data[k] % 2 != 0) {
+                flatArray[count] = data[k];
+                count++;
+            }
+        }
+        System.out.println("Получен массив с нечетными числами: " + Arrays.toString(flatArray));
+        return flatArray;
+    }
+
+    /*
+     * Метод, который проверит является ли последовательность целочисленных значений,
+     * которая находится во входящем массиве, последовательностью чисел Фибоначчи.
+     * Метод должен вернуть true, если последовательность чисел - числа Фибоначчи.
+     */
+    public static boolean fibonacciTest(int[] data) {
+        boolean rsl = true;
+        int a = 0;
+        int b = 0;
+        int tmp =0;
+        for (int i = 2; i < data.length; i++) {
+            a = data[i - 1];
+            b = data[i - 2];
+            tmp = data[i];
+            if (a + b == tmp) {
+                rsl = true;
+            } else {
+                return false;
+            }
+        }
+        System.out.println(rsl);
+        return rsl;
+    }
+
     public static void main(String[] args) {
 
         // Пример для сортировки по возрастанию
@@ -827,6 +875,17 @@ public class ArrayOperationTemplates {
         // 2. Если окажется что сумма элементов - четное число - необходимо вернуть это число, иначе - 0.
         System.out.println(System.lineSeparator() + "sumWithStopEl: ");
         main.sumWithStopEl(arrayPrintEvenAndNotEven, 6);
+
+        // Необходимо перебрать массив и выбрать из него только нечетные числа.
+        // Вернуть новый массив, в котором будут только нечетные числа.
+        // При этом длина нового массива должна совпадать с количеством нечетных значений в исходном массиве.
+        System.out.println(System.lineSeparator() + "arrayWithoutEvenElements: ");
+        main.arrayWithoutEvenElements(arrayPrintEvenAndNotEven);
+
+        //
+        System.out.println(System.lineSeparator() + "fibonacciTest: ");
+        int[] fibonachiArray = {1, 2, 3, 5, 8, 13, 21, 34, 55, 89};
+        main.fibonacciTest(fibonachiArray);
     }
 }
 
