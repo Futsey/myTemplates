@@ -23,6 +23,8 @@ public class financialApp {
             System.out.println("1 — Конвертировать валюту");
             System.out.println("2 — Получить совет");
             System.out.println("3 — Ввести трату");
+            System.out.println("4 - Показать траты за неделю");
+            System.out.println("5 — Показать самую большую сумму расходов за неделю");
             System.out.println("0 — Выход");
 
             int command = scanner.nextInt();
@@ -73,6 +75,18 @@ public class financialApp {
                 if (moneyBeforeSalary < 1000) {
                     System.out.println("На вашем счету осталось совсем немного. Стоит начать экономить!");
                 }
+            } else if (command == 4) {
+                for (int i = 0; i < expenses.length; i++) {
+                    System.out.println("День " + (i + 1) + ". Потрачено " + expenses[i] + " рублей.");
+                }
+            } else if (command == 5) { // Добавьте условие в ветвление для обработки новой команды
+                double maxExpense = 0;
+                for (int i = 0; i < expenses.length; i++) {
+                    if (expenses[i] > maxExpense) {
+                        maxExpense = expenses[i];
+                    }
+                }
+                System.out.println("Самая большая сумма расходов на этой неделе составила " + maxExpense + " руб.");
             } else if (command == 0) {
                 System.out.println("Выход");
                 break;
