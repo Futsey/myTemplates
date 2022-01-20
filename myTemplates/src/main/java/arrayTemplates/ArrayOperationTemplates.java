@@ -261,12 +261,12 @@ public class ArrayOperationTemplates {
         int last = 0;
         int lastMax = 0;
         int length = 0;
-        for(int i = 0; i < array.length; i++) {
-            if(array[i] < last) {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] < last) {
                 lastMax = 0;
             }
             lastMax++;
-            if(length < lastMax) {
+            if (length < lastMax) {
                 length = lastMax;
                 last = array[i];
             }
@@ -281,7 +281,7 @@ public class ArrayOperationTemplates {
     public static void swapMatrixLine(int[][] data, int src, int dst) {
         int row = data.length;
         int column = data[0].length;
-        for (int i=0; i < column; i++) {
+        for (int i = 0; i < column; i++) {
             int temp = data[src][i];
             data[src][i] = data[dst][i];
             data[dst][i] = temp;
@@ -297,7 +297,7 @@ public class ArrayOperationTemplates {
     public static void swapColumns(int[][] data, int src, int dst) {
         int row = data.length;
         int column = data[0].length;
-        for (int i=0; i < row; i++) {
+        for (int i = 0; i < row; i++) {
             int temp = data[i][src];
             data[i][src] = data[i][dst];
             data[i][dst] = temp;
@@ -437,8 +437,8 @@ public class ArrayOperationTemplates {
         double lengthArray = Math.ceil(Math.sqrt(array.length));
         int length = (int) lengthArray;
         int[][] matrix = new int[length][length];
-        for(int i = 0; i < lengthArray; i++) {
-            for(int k = 0; k < lengthArray; k++) {
+        for (int i = 0; i < lengthArray; i++) {
+            for (int k = 0; k < lengthArray; k++) {
                 if (count < array.length) {
                     matrix[i][k] = array[i * length + k];
                     count++;
@@ -465,20 +465,20 @@ public class ArrayOperationTemplates {
     public static int[][] convertInSquareArray(int[][] array) {
         int count = 0;
         int temp = 0;
-        for(int i = 0; i < array.length; i++) {
+        for (int i = 0; i < array.length; i++) {
             count += array[i].length;
         }
         int length = (int) Math.ceil(Math.sqrt(count));
         int[] flatArray = new int[count];
-        for(int i = 0; i < array.length; i++) {
-            for(int x = 0; x < array[i].length; x++) {
+        for (int i = 0; i < array.length; i++) {
+            for (int x = 0; x < array[i].length; x++) {
                 flatArray[temp++] = array[i][x];
             }
         }
         int[][] matrix = new int[length][length];
-        for(int i = 0; i < length; i++) {
+        for (int i = 0; i < length; i++) {
             count = 0;
-            for(int k = 0; k < length; k++) {
+            for (int k = 0; k < length; k++) {
                 if (temp > 0) {
                     matrix[i][k] = flatArray[i * length + k];
                     count++;
@@ -518,7 +518,7 @@ public class ArrayOperationTemplates {
         boolean rsl;
         int tmp = 0;
         for (int i = 0; i < data.length; i++) {
-            if (data[i] == value){
+            if (data[i] == value) {
                 tmp++;
             }
             if (tmp > (data.length / 2)) {
@@ -577,10 +577,10 @@ public class ArrayOperationTemplates {
                 if ((i + k) == sum) {
                     data[i][k] = 0;
                     tempArray[count] = data[i][k];
-                    count ++;
+                    count++;
                 } else {
                     tempArray[count] = data[i][k];
-                    count ++;
+                    count++;
                 }
             }
         }
@@ -666,7 +666,7 @@ public class ArrayOperationTemplates {
         boolean rsl = true;
         int a = 0;
         int b = 0;
-        int tmp =0;
+        int tmp = 0;
         for (int i = 2; i < data.length; i++) {
             a = data[i - 1];
             b = data[i - 2];
@@ -740,7 +740,7 @@ public class ArrayOperationTemplates {
         // Формируем и выводим целочисленный массив размера n, первый элемент которого
         // равен a, второй равен b, а каждый последующий элемент равен сумме всех предыдущих
         System.out.println(System.lineSeparator() + "calculate: ");
-        main.calculate(1,2,5);
+        main.calculate(1, 2, 5);
 
         // Выводим все содержащиеся в данном массиве нечетные числа в порядке возрастания их индексов
         System.out.println(System.lineSeparator() + "printNotEvenUpStream: ");
