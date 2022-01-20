@@ -1,13 +1,19 @@
-package arrayTemplates;
+package yandexPraktikum;
 
 import java.util.Scanner;
 
-public class HelperBot {
+public class HelperBotMyVersion {
 
     public static void main(String[] args) {
         System.out.println("Робот-помощник v1.0.");
-        HelperBot bot = new HelperBot();
-        bot.sayHelloByTime();
+        HelperBotMyVersion bot = new HelperBotMyVersion();
+        double count = 0.00;
+        for (int hour = 0; hour <= 24; hour++) {
+            for (int min = 0; min <= 59; min++) {
+                System.out.println("Текущее время: " + hour + "ч." + min + "м.");
+                bot.sayHelloByTime(hour, min);
+            }
+        }
     }
 
     public static void welcomeUserByName() {
@@ -17,17 +23,17 @@ public class HelperBot {
         System.out.println("Рад познакомиться, " + name + "!");
     }
 
-    public static void sayHelloByTime() {
-        Scanner scanner = new Scanner(System.in);
+    public static void sayHelloByTime(int hour, int min) {
+        //Scanner scanner = new Scanner(System.in);
         System.out.println("Который час?");
-        double currentHour = scanner.nextDouble();
-        if (currentHour >= 6.00 && currentHour <= 11.59){
+        //double currentHour = scanner.nextDouble();
+        if (hour >= 6 && hour <= 11 && (min <= 59)){
             System.out.println("Доброе утро!");
-        } else if (currentHour >= 12.00 && currentHour <= 17.59) {
+        } else if (hour >= 12 && hour <= 17 && (min <= 59)) {
             System.out.println("Добрый день!");
-        } else if (currentHour >= 18.00 && currentHour <= 21.59) {
+        } else if (hour >= 18 && hour <= 21 && (min <= 59)) {
             System.out.println("Добрый вечер!");
-        }else if ((currentHour >= 22.00) || (currentHour <= 5.59)) {
+        } else if ((hour >= 22) || (hour <= 5) && (min <= 59)) {
             System.out.println("Доброй ночи!");
         }
     }
