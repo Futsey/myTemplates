@@ -37,7 +37,6 @@ public class EventsForHelperBot {
             morningGreetings.add("Ok, it`s morning. And it's a polite invitation to wake up");
         int randomItem = random.nextInt(morningGreetings.size());
         String randomElement = morningGreetings.get(randomItem);
-        System.out.println(randomElement);
         return randomElement;
     }
 
@@ -50,7 +49,6 @@ public class EventsForHelperBot {
         morningGreetings.add("Give me some good code. At least once a year...");
         int randomitem = random.nextInt(morningGreetings.size());
         String randomElement = morningGreetings.get(randomitem);
-        System.out.println(randomElement);
         return randomElement;
     }
 
@@ -63,12 +61,11 @@ public class EventsForHelperBot {
         morningGreetings.add("Do you remember that you have a son in kindergarten?");
         int randomitem = random.nextInt(morningGreetings.size());
         String randomElement = morningGreetings.get(randomitem);
-        System.out.println(randomElement);
         return randomElement;
     }
 
     public static void testPerMinute(EventsForHelperBot bot) {
-        for (int hour = 0; hour <= 24; hour++) {
+        for (int hour = 1; hour <= 24; hour++) {
             for (int min = 0; min <= 59; min++) {
                 System.out.println("Текущее время: " + hour + "ч." + min + "м.");
                 events(bot, 0, 0);
