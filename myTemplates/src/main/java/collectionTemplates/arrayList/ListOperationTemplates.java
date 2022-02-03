@@ -21,7 +21,7 @@ public class ListOperationTemplates {
      */
     public static boolean addNewElement(List<String> list, String str) {
         List<String> check = new ArrayList<>(list);
-        check.addAll(list);
+        check.add(str);
         return check.size() != list.size();
     }
 
@@ -41,6 +41,7 @@ public class ListOperationTemplates {
         return false;
     }
 
+
     /* Необходимо определить, является ли этот элемент уникальным в этом списке.
     * Для это необходимо найти первый и последний индекс вхождения элемента.
     * Если равны - значит элемент уникальный. Необходимо предусмотреть ситуацию,
@@ -49,6 +50,7 @@ public class ListOperationTemplates {
     public static boolean uniqueElement(List<String> list, String str) {
         return list.contains(str) && list.indexOf(str) == list.lastIndexOf(str);
     }
+
 
     /* в методе вам нужно заполнить коллекцию значениями от first до fifth с помощь фабричного метода of().
     * После этого с помощью цикла for() с индексами и метода get() вывести все элементы.
