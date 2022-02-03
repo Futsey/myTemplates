@@ -40,4 +40,23 @@ public class ListOperationTemplates {
         }
         return false;
     }
+
+    /* Необходимо определить, является ли этот элемент уникальным в этом списке.
+    * Для это необходимо найти первый и последний индекс вхождения элемента.
+    * Если равны - значит элемент уникальный. Необходимо предусмотреть ситуацию,
+    * что такого элемента нет вообще в коллекции, в этом случае также нужно вернуть false.
+     */
+    public static boolean uniqueElement(List<String> list, String str) {
+        return list.contains(str) && list.indexOf(str) == list.lastIndexOf(str);
+    }
+
+    /* в методе вам нужно заполнить коллекцию значениями от first до fifth с помощь фабричного метода of().
+    * После этого с помощью цикла for() с индексами и метода get() вывести все элементы.
+     */
+    public static void factoryAddMethod() {
+        List<String> list = List.of("first", "second", "third", "fourth", "fifth");
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(list.get(i));
+        }
+    }
 }

@@ -8,6 +8,9 @@ import java.util.List;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 public class ListOperationTemplatesTest {
 
     @Test
@@ -59,4 +62,35 @@ public class ListOperationTemplatesTest {
         assertThat(result, is(false));
     }
 
+    @Test
+    public void checkListTrue() {
+        List<String> list = new ArrayList<>();
+        list.add("first");
+        list.add("second");
+        list.add("third");
+        boolean result = ListOperationTemplates.uniqueElement(list, "second");
+        assertThat(result, is(true));
+    }
+
+    @Test
+    public void checkListFalse() {
+        List<String> list = new ArrayList<>();
+        list.add("first");
+        list.add("second");
+        list.add("third");
+        list.add("second");
+        list.add("fourth");
+        boolean result = ListOperationTemplates.uniqueElement(list, "second");
+        assertThat(result, is(false));
+    }
+
+    @Test
+    public void checkListNoContainsElement() {
+        List<String> list = new ArrayList<>();
+        list.add("first");
+        list.add("second");
+        list.add("third");
+        boolean result = ListOperationTemplates.uniqueElement(list, "fourth");
+        assertThat(result, is(false));
+    }
 }
