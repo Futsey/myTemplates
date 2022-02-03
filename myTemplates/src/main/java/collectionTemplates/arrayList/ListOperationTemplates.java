@@ -9,7 +9,8 @@ public class ListOperationTemplates {
     * но прежде чем получить результат - необходимо проверить содержатся ли элементы в списке.
     * Если их нет - возвращаем пустую строку, иначе - первый элемент в коллекции
      */
-    public static String checkerAhdGetter(List<String> list) {
+    public static String checkerAndGetter(List<String> list) {
+
         return !list.isEmpty() ? list.get(0) : "";
     }
 

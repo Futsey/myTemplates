@@ -16,7 +16,7 @@ public class ListOperationTemplatesTest {
     @Test
     public void whenGetNull() {
         List<String> list = new ArrayList<>();
-        String result = ListOperationTemplates.checkerAhdGetter(list);
+        String result = ListOperationTemplates.checkerAndGetter(list);
         String expected = "";
         assertThat(result, is(expected));
     }
@@ -27,7 +27,7 @@ public class ListOperationTemplatesTest {
         list.add("first");
         list.add("second");
         list.add("third");
-        String result = ListOperationTemplates.checkerAhdGetter(list);
+        String result = ListOperationTemplates.checkerAndGetter(list);
         String expected = "first";
         assertThat(result, is(expected));
     }
