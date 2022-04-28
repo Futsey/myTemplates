@@ -2,8 +2,9 @@ package arrayTemplates;
 
 import java.util.Arrays;
 import java.io.*;
+import java.util.Objects;
 
-public class ArrayOperationTemplates {
+public class ArrayOperationTemplates<T> {
 
     /*
      * Сортировка по возрастанию true
@@ -886,6 +887,8 @@ public class ArrayOperationTemplates {
         System.out.println(System.lineSeparator() + "fibonacciTest: ");
         int[] fibonachiArray = {1, 2, 3, 5, 8, 13, 21, 34, 55, 89};
         main.fibonacciTest(fibonachiArray);
+
+
     }
 }
 

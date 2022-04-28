@@ -113,4 +113,6 @@ public class ListOperationTemplates {
             return !list.contains(el) || list.indexOf(el) == list.lastIndexOf(el) ?
                     new ArrayList<String>() : list.subList(list.indexOf(el), list.lastIndexOf(el));
     }
+
+
 }
